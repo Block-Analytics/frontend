@@ -45,16 +45,8 @@ export default defineComponent({
     }
     onMounted(async () => {
       addEventListener("scroll", (event) => {
-        console.log(window.scrollY);
-
         if (window.scrollY > 550) {
           sidebarVisible.value = true;
-
-          if (window.scrollY > 550) {
-            useblockchainDataStore().setNav('eth')
-            } else if(window.scrollY > 800) {
-            useblockchainDataStore().setNav('avax')
-            }
         } else {
           sidebarVisible.value = false;
         }
