@@ -19,6 +19,7 @@
     "unique-names-generator": "^4.7.1",
     "vue": "^3.2.25",
     "vue-chartjs": "^5.2.0",
+    "vue-kinesis": "^2.0.5",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"

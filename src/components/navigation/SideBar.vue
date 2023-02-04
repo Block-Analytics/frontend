@@ -10,8 +10,9 @@
       </svg>
     </div>
     <div class="home relative">
-      <div v-if="activeSection == 'home'"
-        class="absolute rounded-full -right-1 -top-1 h-8 w-8 bg-[#38D900] z-10 shadow-xl shadow-[#38D900]/60"></div>
+      <div
+      :class="activeSection == 'home'?'-translate-x-0 -translate-y-0 opacity-100':'opacity-0 -translate-x-1 -translate-y-1'"
+      class="absolute rounded-full -right-1 -top-1 h-8 w-8 bg-[#38D900] z-10 transition-all duration-300"></div>
       <div class="icon flex items-center justify-center relative rounded-full h-8 w-8 z-20 bg-white/20"
         :class="{ 'gradient-radial': activeSection == 'home' }">
         <svg class="h-4" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +25,9 @@
       </div>
     </div>
     <div class="ethereum relative">
-      <div v-if="activeSection == 'eth'" class="absolute rounded-full -right-1 -top-1 h-8 w-8 bg-[#38D900] z-10"></div>
+      <div
+      :class="activeSection == 'eth'?'-translate-x-0 -translate-y-0 opacity-100':'opacity-0 -translate-x-1 -translate-y-1'"
+      class="absolute rounded-full -right-1 -top-1 h-8 w-8 bg-[#38D900] z-10 transition-all duration-300"></div>
       <div class="icon flex items-center justify-center relative rounded-full h-8 w-8 z-20 bg-white/20"
         :class="{ 'gradient-radial': activeSection == 'eth' }">
         <svg class="h-5 mx-auto" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +39,9 @@
       </div>
     </div>
     <div class="avalanche relative">
-      <div v-if="activeSection == 'avax'" class="absolute rounded-full -right-1 -top-1 h-8 w-8 bg-[#38D900] z-10"></div>
+      <div
+      :class="activeSection == 'avax'?'-translate-x-0 -translate-y-0 opacity-100':'opacity-0 -translate-x-1 -translate-y-1'"
+      class="absolute rounded-full -right-1 -top-1 h-8 w-8 bg-[#38D900] z-10 transition-all duration-300"></div>
       <div class="icon flex items-center justify-center relative rounded-full h-8 w-8 z-20 bg-white/20"
         :class="{ 'gradient-radial': activeSection == 'avax' }">
         <svg class="h-7" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,16 +92,20 @@ export default defineComponent({
       window.addEventListener(
         'scroll',
         function () {
-          var offsetETH = document.querySelector<HTMLElement>('#eth').offsetHeight;
-          var offsetAVAX = document.querySelector<HTMLElement>('#avax').offsetHeight;
+          var offsetETH = document.querySelector<HTMLElement>('#eth')?.offsetTop;
+          var offsetAVAX = document.querySelector<HTMLElement>('#avax')?.offsetTop;
+          console.log(offsetETH, offsetAVAX);
+          console.log(window.scrollY);
+          
+          
           //var offsetXTZ = document.querySelector<HTMLElement>('#xtz').offsetHeight;
-          if (window.scrollY > offsetETH / 2) // modified
-          {
-            activeSection.value = 'eth';
-          }
-          else if (window.scrollY > offsetAVAX / 2) // modified
+          if (window.scrollY > offsetAVAX*0.8)
           {
             activeSection.value = 'avax';
+          }
+          else if (window.scrollY > offsetETH*0.8)
+          {
+            activeSection.value = 'eth';
           }
           else {
             activeSection.value = 'home';

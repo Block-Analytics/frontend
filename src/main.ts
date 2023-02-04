@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import VueKinesis from "vue-kinesis";
 
 
 import router from './router/';
@@ -16,5 +17,6 @@ const app = createApp(App);
 
 app.use(router);
 app.use(pinia);
+app.use(VueKinesis);
 
 app.mount('#app')
