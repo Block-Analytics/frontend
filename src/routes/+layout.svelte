@@ -49,4 +49,7 @@
 	:global(body) {
         font-family: 'Montserrat', sans-serif;
 	}
+	:global(input:focus, select:focus, textarea:focus, button:focus) {
+		outline: none;
+	}
 </style>
