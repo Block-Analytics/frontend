@@ -46,7 +46,11 @@ import { writable } from 'svelte/store';
 
 */
 const state = writable({
-    val: false
+    blockchain: {
+        blocks: [],
+        transactions: []
+    },
+    nav: 'home'
 })
 
 export default state;

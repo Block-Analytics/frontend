@@ -1,13 +1,81 @@
-<svg
-	class="animate-spin -ml-1 mr-1 h-4 w-4 text-blue-primary110 dark:text-blue-primary110"
-	xmlns="http://www.w3.org/2000/svg"
-	fill="none"
-	viewBox="0 0 24 24"
->
-	<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-	<path
-		class="opacity-75"
-		fill="currentColor"
-		d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-	/>
-</svg>
+<div class="loader triangle">
+	<svg class="h-20" viewBox="0 0 86 80">
+		<polygon points="43 8 79 72 7 72"></polygon>
+	</svg>
+</div>
+
+<style>
+.loader {
+	 --path: #fff;
+	 --dot: #38d900;
+	 --duration: 3s;
+	 width: 44px;
+	 height: 44px;
+	 position: relative;
+}
+ .loader:before {
+	 content: '';
+	 width: 6px;
+	 height: 6px;
+	 border-radius: 50%;
+	 position: absolute;
+	 display: block;
+	 background: var(--dot);
+	 top: 37px;
+	 left: 19px;
+	 transform: translate(-18px, -18px);
+}
+ .loader svg {
+	 display: block;
+	 width: 100%;
+	 height: 100%;
+}
+.loader svg polygon {
+	 fill: none;
+	 stroke: var(--path);
+	 stroke-width: 10px;
+	 stroke-linejoin: round;
+	 stroke-linecap: round;
+}
+ .loader svg polygon {
+	 stroke-dasharray: 145 76 145 76;
+	 stroke-dashoffset: 0;
+	 animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+ .loader.triangle {
+	 width: 48px;
+}
+ .loader.triangle:before {
+	 left: 21px;
+	 transform: translate(-10px, -18px);
+	 animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+ @keyframes pathTriangle {
+	 33% {
+		 stroke-dashoffset: 74;
+	}
+	 66% {
+		 stroke-dashoffset: 147;
+	}
+	 100% {
+		 stroke-dashoffset: 221;
+	}
+}
+ @keyframes dotTriangle {
+	 33% {
+		 transform: translate(0, 0);
+	}
+	 66% {
+		 transform: translate(10px, -18px);
+	}
+	 100% {
+		 transform: translate(-10px, -18px);
+	}
+}
+ .loader {
+	 display: inline-block;
+	 margin: 0 16px;
+}
+ 
+</style>
